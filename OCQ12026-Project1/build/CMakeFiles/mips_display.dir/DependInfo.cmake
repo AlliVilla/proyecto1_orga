@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ideras/classes/2026/Q1_2026/CCC403_ORGANIZACION_DE_COMPUTADORAS/Proyecto/Project1/Main.cpp" "CMakeFiles/mips_display.dir/Main.cpp.o" "gcc" "CMakeFiles/mips_display.dir/Main.cpp.o.d"
-  "/home/ideras/classes/2026/Q1_2026/CCC403_ORGANIZACION_DE_COMPUTADORAS/Proyecto/Project1/MipsDisplay.cpp" "CMakeFiles/mips_display.dir/MipsDisplay.cpp.o" "gcc" "CMakeFiles/mips_display.dir/MipsDisplay.cpp.o.d"
+  "/home/allison/Documentos/GitHub/proyecto1_orga/OCQ12026-Project1/Main.cpp" "CMakeFiles/mips_display.dir/Main.cpp.o" "gcc" "CMakeFiles/mips_display.dir/Main.cpp.o.d"
+  "/home/allison/Documentos/GitHub/proyecto1_orga/OCQ12026-Project1/MipsDisplay.cpp" "CMakeFiles/mips_display.dir/MipsDisplay.cpp.o" "gcc" "CMakeFiles/mips_display.dir/MipsDisplay.cpp.o.d"
   "" "libmips_display.so" "gcc" "CMakeFiles/mips_display.dir/link.d"
   )
 

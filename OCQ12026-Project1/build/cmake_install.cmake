@@ -1,4 +1,4 @@
-# Install script for directory: /home/ideras/classes/2026/Q1_2026/CCC403_ORGANIZACION_DE_COMPUTADORAS/Proyecto/Project1
+# Install script for directory: /home/allison/Documentos/GitHub/proyecto1_orga/OCQ12026-Project1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,7 +45,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/ideras/classes/2026/Q1_2026/CCC403_ORGANIZACION_DE_COMPUTADORAS/Proyecto/Project1/build/install_local_manifest.txt"
+  file(WRITE "/home/allison/Documentos/GitHub/proyecto1_orga/OCQ12026-Project1/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +61,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/ideras/classes/2026/Q1_2026/CCC403_ORGANIZACION_DE_COMPUTADORAS/Proyecto/Project1/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/allison/Documentos/GitHub/proyecto1_orga/OCQ12026-Project1/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
