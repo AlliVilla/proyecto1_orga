@@ -22,5 +22,8 @@ main:
 
     li $v0,102
     syscall
+
+    li $v0,104
+    syscall
 loop:
     j loop

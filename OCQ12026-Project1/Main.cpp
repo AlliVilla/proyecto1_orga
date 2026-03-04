@@ -28,6 +28,16 @@ extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map
         if(display)
             display->Clear(a0);
             return ErrorCode::Ok;
+        case 104:
+        if(display)
+           regs[Register::v0]=display->GetLastKey();
+        else
+            regs[Register::v0]=0;
+            return ErrorCode::Ok;
+        case 105:
+        if(display)
+            display->StopEngine();
+            return ErrorCode::Ok;
         default:
         return ErrorCode::SyscallNotImplemented;
     }
