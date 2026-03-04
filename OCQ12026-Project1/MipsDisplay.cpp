@@ -2,7 +2,7 @@
 
 #include <chrono>
 #include "MipsDisplay.hpp"
-
+#include <iostream>
 MipsDisplay::MipsDisplay()
 { sAppName = "MIPS Virtual FrameBuffer"; }
 
@@ -48,9 +48,13 @@ void MipsDisplay::Sleep(int ms)
 
 void MipsDisplay::Flush()
 {
-    for (int y = 0; y < SCREEN_H; y++)
-        for (int x = 0; x < SCREEN_W; x++)
-            Draw(x, y, olc::Pixel(vram[y * SCREEN_W + x]));
+    for (int y = 0; y < SCREEN_H; y++){
+        for (int x = 0; x < SCREEN_W; x++){
+            uint32_t color = vram[y * SCREEN_W + x];
+            Draw(x, y, olc::Pixel((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF, 255));
+        }
+    }
+        
 }
 
 void MipsDisplay::RunEngine()
@@ -74,4 +78,13 @@ void MipsDisplay::StopEngine()
         thread_.join();
     }
     olc_Terminate();
+}
+
+void MipsDisplay::SetPixel(int x, int y, uint32_t color)
+{
+    if (x < 0 || x >= SCREEN_W || y < 0 || y >= SCREEN_H) {
+        std::cerr<<"SetPixel fuera de rango: "<<x<<','<<y<<"\n";
+        return;
+    }
+    vram[y * SCREEN_W + x] = color;
 }

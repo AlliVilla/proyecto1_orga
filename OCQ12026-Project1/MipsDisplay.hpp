@@ -20,7 +20,7 @@ public:
     void RunEngine();
     void StopEngine();
     void Sleep(int ms);
-
+    void SetPixel(int x,int y,uint32_t color);
     void RefreshWindow()
     { Flush(); }
 
