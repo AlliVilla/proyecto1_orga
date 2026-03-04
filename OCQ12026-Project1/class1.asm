@@ -15,5 +15,12 @@ main:
 
     li $v0,102
     syscall
+
+    li $a0,0xFF0000
+    li $v0,103
+    syscall
+
+    li $v0,102
+    syscall
 loop:
     j loop

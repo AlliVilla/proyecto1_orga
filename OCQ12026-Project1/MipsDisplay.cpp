@@ -88,3 +88,10 @@ void MipsDisplay::SetPixel(int x, int y, uint32_t color)
     }
     vram[y * SCREEN_W + x] = color;
 }
+
+void MipsDisplay::Clear(uint32_t color)
+{
+    for (int i = 0; i < SCREEN_W * SCREEN_H; i++){
+        vram[i] = color;
+    }
+}

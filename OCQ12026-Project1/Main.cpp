@@ -24,6 +24,10 @@ extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map
         if(display)
             display->Flush();
             return ErrorCode::Ok;
+        case 103:
+        if(display)
+            display->Clear(a0);
+            return ErrorCode::Ok;
         default:
         return ErrorCode::SyscallNotImplemented;
     }
