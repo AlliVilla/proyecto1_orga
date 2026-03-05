@@ -95,3 +95,11 @@ void MipsDisplay::Clear(uint32_t color)
         vram[i] = color;
     }
 }
+void MipsDisplay::exit()
+{
+    running = false;
+    if(thread_.joinable()){
+        thread_.join();
+    }
+        olc_Terminate();
+}

@@ -24,6 +24,7 @@ public:
     void Clear(uint32_t color);
     void RefreshWindow()
     { Flush(); }
+    void exit();
 
     int GetLastKey() const
     { return last_key; }

@@ -1,6 +1,6 @@
 #include "easm.h"
 #include "MipsDisplay.hpp"
-
+#include <iostream>
 
 static MipsDisplay* display;
 extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map)
@@ -21,8 +21,10 @@ extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map
             display->SetPixel(a0,a1,a2);
             return ErrorCode::Ok;
         case 102:
-        if(display)
+        if(display){
             display->Flush();
+            display->Sleep(16);
+        }
             return ErrorCode::Ok;
         case 103:
         if(display)
@@ -35,8 +37,11 @@ extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map
             regs[Register::v0]=0;
             return ErrorCode::Ok;
         case 105:
-        if(display)
-            display->StopEngine();
+        if(display){
+            display->exit();
+        std::cout<<"entra\n";
+        }
+            
             return ErrorCode::Ok;
         default:
         return ErrorCode::SyscallNotImplemented;
