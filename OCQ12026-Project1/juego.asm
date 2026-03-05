@@ -46,6 +46,7 @@ exit:
     syscall
     li $v0,10
     syscall
+    
 
 mover:
     sw $t2,0($t1)
@@ -57,8 +58,8 @@ mover:
 
     move $a0,$t2
     move $a1,$t4
-    li $a2,30 ;width
-    li $a3,10 ;height
+    li $a2,10 ;width
+    li $a3,30 ;height
     jal draw_rectangle
 
     li $a0,10       
@@ -73,12 +74,11 @@ mover:
     j loop
 
 draw_rectangle:
-addi $sp,$sp,-8
-li $s0,0xFF0000
-sw $s0,0($sp) ;s0 es el color
-sw $ra,4($sp)
-
-move $t1,$zero ;y=0
+    addi $sp,$sp,-8
+    li $s0,0xFF0000
+    sw $s0,0($sp) ;s0 es el color
+    sw $ra,4($sp)
+    move $t1,$zero ;y=0
 
 loopy:
     slt $t2, $t1,$a3 ;si y<height
@@ -88,25 +88,40 @@ loopy:
 loopx:
     slt $t4, $t3,$a2 ;si x<width
     beq $t4,$zero,sig ;si no, termina este ciclo y aumenta y
-    add $a0,$a0,$t3 ;a0=base+x
+; ----------------------
+    beq $t3,$zero,es_borde       ;si x=0, es borde izquierdo
+    addi $t5,$a2,-1              ;desde 0 hasta width-1
+    beq $t3,$t5,es_borde         ;si x=width-1, es borde derecho
+
+    beq $t1,$zero,es_borde       ;y =0, borde superior
+    addi $t5,$a3,-1              ;desde 0 hasta height-1
+    beq $t1,$t5,es_borde         ;si y=height-1, borde inferior
+    j skip_borde
+
+
+es_borde:
+    add $a0,$a0,$t3 ;a0=base+x 
     add $a1,$a1,$t1 ;a1=base+y
     lw $s0,0($sp);cargarelcolor
     li $v0,101
     syscall
     sub $a0, $a0, $t3    ;restaurar a0
     sub $a1, $a1, $t1    ;restaurar a1
-        addi $t3, $t3, 1 ;x++
-j loopx
+
+skip_borde:
+    addi $t3, $t3, 1 ;x++
+    j loopx
+;------------------------
 
 sig:
     addi $t1, $t1, 1
     j loopy
 
 done:
-lw $s0,0($sp)
-lw $ra,4($sp)
-addi $sp,$sp,8
-jr $ra
+    lw $s0,0($sp)
+    lw $ra,4($sp)
+    addi $sp,$sp,8
+    jr $ra
 
 draw_horizontal_line:
 ;a0=x1, a1=x2, a2=y, a3=color

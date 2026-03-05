@@ -97,9 +97,5 @@ void MipsDisplay::Clear(uint32_t color)
 }
 void MipsDisplay::exit()
 {
-    running = false;
-    if(thread_.joinable()){
-        thread_.join();
-    }
-        olc_Terminate();
+ std::exit(0); //xd
 }
